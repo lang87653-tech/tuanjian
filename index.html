@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="EObmtDFLcvkE4uiculPCgH">
+<head data-page-node-id="xgIOZtLrcAJzWxN7Ssdsec">
+<meta charset="UTF-8" data-page-node-id="0xAUsVUnEC05jWgE0Vy7H6" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" data-page-node-id="KEaFGQZjUiy1EkhRyxQF2T" />
+<title>团建旅行方案投票</title>
+<meta name="description" content="5 个精选目的地团建方案，投票选出最想去的那一趟。" data-page-node-id="1qiRjhhNflc1Y4EIcFJm19" />
+<meta property="og:title" content="团建旅行方案投票" data-page-node-id="GcGCbDSyG5IkD46M2P9BKJ" />
+<meta property="og:description" content="三亚 · 大理 · 成都 · 厦门 · 千岛湖，5 个方案等你投票" data-page-node-id="HU5tFQHwWBmdMDJHNS9oL3" />
+<meta property="og:image" content="https://e20c34b0cb00493bbfb02d39dc96d8d8.app-tencent.workbuddy.link/images/sanya_0.jpg" data-page-node-id="Xexu6XGVFQSjXI5rc3GjGd" />
+<meta property="og:type" content="website" data-page-node-id="si7DdcD4SHTy1IPymfmYX7" />
+<style>
+  :root{
+    /* iOS 系统风（原生苹果质感） */
+    --bg:#F2F2F7; --card:#FFFFFF; --ink:#1C1C1E; --muted:#8E8E93;
+    --accent:#007AFF; --accent-soft:rgba(0,122,255,.10); --line:rgba(60,60,67,.12);
+    --blue:#007AFF; --green:#34C759; --orange:#FF9500; --yellow:#FFC400;
+    --radius:16px;
+    --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 20px rgba(0,0,0,.05);
+    --hairline:rgba(60,60,67,.10);
+    --surface:#F2F2F7; --surface-2:#E9E9EB; --surface-3:#F2F2F7;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0;}
+  html,body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;}
+  body{background:var(--bg);color:var(--ink);}
+  .phone{width:100%;max-width:480px;margin:0 auto;position:relative;background:var(--bg);min-height:100vh;min-height:100dvh;}
+
+  .wrap{display:block;padding:0 0 120px;scrollbar-width:none;-ms-overflow-style:none;}
+  .wrap::-webkit-scrollbar{display:none;}
+
+  /* Header */
+  .header-zone{position:relative;padding-bottom:4px;background:linear-gradient(180deg,rgba(0,122,255,.04) 0%,rgba(0,122,255,0) 75%);}
+  .hb-btn{font-size:12px;font-weight:600;color:var(--ink);background:#FFFFFF;border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:6px 12px;cursor:pointer;white-space:nowrap;transition:.15s;display:flex;align-items:center;justify-content:center;gap:4px;}
+  .hb-btn:hover{background:#FAFAFA;border-color:rgba(0,0,0,.12);}
+  .hb-btn:active{transform:scale(.96);background:#EFEFF1;}
+  .hb-btn.syncing{color:#999;border-color:rgba(0,0,0,.08);background:#F5F5F7;pointer-events:none;}
+  .hb-btn.syncing::after{content:'';display:inline-block;width:13px;height:13px;border:2px solid #999;border-top-color:transparent;border-radius:50%;animation:spin .65s linear infinite;margin-left:4px;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .pad{padding:16px 16px 0;}
+
+  /* 卡片 */
+  .card{background:var(--card);border:1px solid var(--hairline);border-radius:var(--radius);padding:18px;margin-bottom:14px;transition:border-color .2s,box-shadow .2s,transform .2s;box-shadow:var(--shadow);}
+  .card:active{transform:scale(.99);}
+  .card.voted{border-color:var(--accent);box-shadow:0 1px 3px rgba(0,122,255,.06),0 12px 28px rgba(0,122,255,.12);}
+  .c-top{display:flex;align-items:center;gap:13px;}
+  .c-icon{width:52px;height:52px;border-radius:13px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:27px;overflow:hidden;background:var(--surface-2);border:none;}
+  .c-icon img{width:100%;height:100%;object-fit:cover;}
+  .c-info{flex:1;min-width:0;}
+  .c-name{font-size:18px;font-weight:800;line-height:1.25;letter-spacing:-.4px;}
+  .c-place{font-size:12px;color:var(--muted);margin-top:3px;font-weight:500;letter-spacing:.1px;}
+  .c-arrow{width:26px;height:26px;border-radius:50%;background:transparent;border:none;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:rgba(142,142,147,.5);transition:.15s;}
+  .card:active .c-arrow{transform:translateX(2px);color:var(--accent);}
+  .c-arrow svg{width:13px;height:13px;stroke-width:1.8;}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px;}
+  .tag{font-size:11px;color:var(--muted);background:transparent;border:1px solid rgba(60,60,67,.10);padding:3px 9px;border-radius:14px;font-weight:400;}
+
+  .data-row{display:flex;align-items:center;gap:18px;margin-top:13px;padding-top:12px;border-top:1px solid var(--hairline);}
+  .data-item{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:3px;font-weight:500;}
+  .data-item b{color:var(--ink);font-weight:700;font-size:13px;font-variant-numeric:tabular-nums;}
+
+  .desc{font-size:12.5px;color:#6E6E73;line-height:1.6;margin-top:12px;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;display:-webkit-box;}
+
+  .vote-btn{width:100%;margin-top:15px;border:1px solid rgba(26,26,28,.10);border-radius:13px;padding:14px 0;font-size:15px;font-weight:700;background:#fff;color:var(--ink);transition:.15s;cursor:pointer;letter-spacing:.3px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+  .vote-btn:active{transform:scale(.985);background:var(--bg);}
+  .vote-btn.done{border-color:var(--accent);color:#fff;background:var(--accent);}
+
+  /* 统计页 */
+  .r-head{padding:0 0 14px;}
+  .r-head .t{font-size:20px;font-weight:700;letter-spacing:-.2px;}
+  .r-head .s{font-size:12px;color:var(--muted);margin-top:3px;font-weight:500;}
+
+  .overview-card{background:#FFFFFF;border:1px solid var(--hairline);border-radius:16px;padding:20px 18px 17px;margin-bottom:15px;display:flex;gap:4px;align-items:center;box-shadow:var(--shadow);}
+  .ov-item{flex:1;text-align:center;min-width:0;padding:0 3px;}
+  .ov-num{font-size:38px;font-weight:800;color:var(--ink);line-height:1.05;letter-spacing:-1.2px;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .ov-lbl{font-size:11px;color:var(--muted);margin-top:5px;font-weight:500;letter-spacing:.15px;}
+
+  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+  .sg-card{position:relative;background:#FFFFFF;border:1px solid var(--hairline);border-radius:14px;padding:14px 14px 14px 16px;overflow:hidden;box-shadow:var(--shadow);}
+  .sg-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent);border-radius:3px 0 0 3px;}
+  .sg-card.alt::before{background:var(--blue);}
+  .sg-row{display:flex;align-items:baseline;gap:8px;}
+  .sg-num{font-size:38px;font-weight:800;color:var(--ink);line-height:1;letter-spacing:-1.2px;font-variant-numeric:tabular-nums;}
+  .sg-unit{font-size:12px;font-weight:600;color:var(--muted);}
+  .sg-lbl{font-size:12px;color:var(--muted);font-weight:500;letter-spacing:.1px;margin-top:6px;}
+
+  .row2{display:flex;gap:10px;}
+  .row2 .inp{flex:1;}
+  .it-input-sec{margin-top:4px;}
+  .it-day-card{background:#FAFBFC;border:1px solid #E8ECF1;border-radius:12px;padding:14px 14px 12px;margin-top:10px;transition:.15s;}
+  .it-day-card:first-child{margin-top:0;}
+  .it-day-hd{display:flex;align-items:center;gap:8px;margin-bottom:9px;}
+  .it-day-badge{font-size:10.5px;font-weight:700;color:#fff;background:var(--ink);padding:3px 9px;border-radius:6px;letter-spacing:.3px;text-transform:uppercase;}
+  .it-day-title-inp{flex:1;border:1px solid #E4E7EB;border-radius:8px;padding:8px 10px;font-size:13px;font-family:inherit;background:#fff;color:var(--ink);outline:none;transition:.15s;}
+  .it-day-title-inp:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,122,255,.06);}
+  .it-day-title-inp::placeholder{color:#B8BCC4;}
+  .it-items-label{font-size:11px;color:var(--muted);margin-bottom:5px;font-weight:500;display:flex;align-items:center;gap:4px;}
+  .it-items-inp{width:100%;border:1px solid #E4E7EB;border-radius:8px;padding:9px 10px;font-size:12.5px;font-family:inherit;background:#fff;color:var(--ink);outline:none;resize:none;height:64px;line-height:1.55;transition:.15s;}
+  .it-items-inp:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,122,255,.05);}
+  .it-items-inp::placeholder{color:#B8BCC4;}
+  .it-empty-hint{text-align:center;color:var(--muted);font-size:12.5px;padding:18px 0;opacity:.6;}
+
+  .stat-card{background:#FFFFFF;border:1px solid var(--hairline);border-radius:15px;padding:0;margin-bottom:11px;overflow:hidden;box-shadow:var(--shadow);}
+  .stat-hd{display:flex;align-items:center;padding:14px 14px 10px;gap:10px;}
+  .stat-emoji{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:21px;background:var(--surface-2);border:none;flex-shrink:0;}
+  .stat-info{flex:1;min-width:0;}
+  .stat-name{font-size:15px;font-weight:700;letter-spacing:-.1px;}
+  .stat-v{font-size:12px;color:var(--muted);font-weight:500;margin-top:1px;}
+  .stat-pct-badge{font-size:12px;font-weight:800;color:var(--accent);background:var(--accent-soft);padding:4px 9px;border-radius:7px;flex-shrink:0;}
+  .stat-bar-wrap{padding:0 14px 7px;}
+  .stat-card .bar{height:5px;background:rgba(0,0,0,.06);border-radius:3px;overflow:hidden;}
+  .stat-card .fill{height:100%;border-radius:3px;background:var(--accent);transition:width .65s ease;}
+  .stat-notes{padding:0 14px 13px;border-top:1px solid var(--line);background:#fff;}
+  .note-item{display:flex;gap:8px;padding:8px 0;}
+  .note-item:last-child{padding-bottom:0;}
+  .note-avatar{width:26px;height:26px;border-radius:50%;background:#F4F4F6;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;font-weight:700;color:var(--muted);}
+  .note-body{flex:1;min-width:0;}
+  .note-who{font-size:11.5px;font-weight:700;color:var(--ink);}
+  .note-who .me-tag{font-size:9px;font-weight:600;color:#fff;background:var(--green);padding:1.5px 5px;border-radius:4px;margin-left:4px;vertical-align:middle;}
+  .note-text{font-size:12px;color:#888;line-height:1.42;margin-top:1px;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;display:-webkit-box;}
+  .notes-empty{font-size:12px;color:var(--muted);padding:13px 14px;text-align:center;}
+
+  /* 悬浮Tab Bar */
+  .tabbar{position:fixed;left:50%;transform:translateX(-50%);width:calc(100% - 24px);max-width:456px;bottom:32px;height:64px;background:rgba(255,255,255,.92);border:1px solid var(--hairline);border-radius:28px;display:flex;align-items:center;z-index:10;box-shadow:0 8px 24px rgba(0,0,0,.10);}
+  .tabitem{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--muted);font-size:10px;font-weight:600;cursor:pointer;background:none;border:none;border-radius:18px;transition:.2s ease;}
+  .tabitem svg{width:21px;height:21px;stroke:currentColor;fill:none;stroke-width:1.9;transition:.2s ease;filter:grayscale(.15);}
+  .tabitem.active{color:var(--accent);font-weight:700;}
+  .tabitem.active svg{filter:none;transform:scale(1.04);}
+  .tabitem.mid-wrap{position:relative;flex:0 0 60px;display:flex;align-items:center;justify-content:center;}
+  .mid-fab{width:46px;height:46px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,122,255,.35);cursor:pointer;transition:.2s cubic-bezier(.25,.46,.45,.94);border:none;position:relative;top:0;left:0;}
+  .mid-fab svg{width:22px;height:22px;stroke:#fff;fill:none;stroke-width:2.4;}
+  .mid-fab:active{transform:scale(.88);background:#0062CC;}
+  .mid-label{display:none;}
+
+  /* Detail */
+  .detail{position:fixed;inset:0;background:#FFFFFF;z-index:50;display:none;flex-direction:column;animation:dIn .28s cubic-bezier(.2,.8,.2,1);}
+  .detail.show{display:flex;}
+  @keyframes dIn{from{transform:translateX(100%);}to{transform:translateX(0);}}
+  .d-hero-wrap{position:relative;height:224px;flex-shrink:0;background:#E8E8ED;overflow:hidden;}
+  .d-hero{width:100%;height:100%;object-fit:cover;display:block;}
+  .d-hero-wrap::after{content:"";position:absolute;left:0;right:0;bottom:0;height:64px;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.22) 100%);pointer-events:none;}
+  .d-hero-wrap::before{content:"";position:absolute;left:0;right:0;top:0;height:54px;background:linear-gradient(180deg,rgba(0,0,0,.28) 0%,rgba(0,0,0,0) 100%);pointer-events:none;z-index:1;}
+  .d-close{position:absolute;top:calc(env(safe-area-inset-top,0px) + 10px);left:10px;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.4);color:#fff;border:none;font-size:15px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;}
+  .d-tag{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.46);color:#fff;font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:18px;z-index:2;}
+  .d-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:20px 18px 110px;scrollbar-width:none;-ms-overflow-style:none;}
+  .d-body::-webkit-scrollbar{display:none;}
+  .d-title{font-size:21px;font-weight:700;letter-spacing:-.2px;}
+  .d-meta{display:flex;gap:14px;margin-top:10px;font-size:12.5px;color:var(--muted);}
+  .d-meta b{color:var(--ink);font-weight:600;font-size:13px;}
+  .d-desc{font-size:13px;color:#666;line-height:1.6;margin-top:10px;}
+  .d-seg{display:flex;background:#F2F2F7;border-radius:12px;padding:3px;margin:18px 0 4px;position:sticky;top:0;z-index:6;}
+  .d-seg button{flex:1;border:none;background:none;font-size:13px;font-weight:600;color:var(--muted);padding:8px 4px;border-radius:9px;cursor:pointer;transition:.22s cubic-bezier(.25,.46,.45,.94);display:flex;align-items:center;justify-content:center;gap:5px;}
+  .d-seg button.active{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.04);}
+  .d-seg button svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;}
+  .d-tab{display:none;}
+  .d-tab.active{display:block;animation:segIn .26s cubic-bezier(.2,.8,.2,1);}
+  .d-tab-hd{font-size:14px;font-weight:700;color:var(--ink);margin:16px 0 12px;display:flex;align-items:center;gap:7px;letter-spacing:-.2px;}
+  @keyframes segIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  .empty-hint{text-align:center;color:var(--muted);font-size:13px;padding:40px 0;}
+  .it-day{background:#FAFBFC;border:1px solid #F0F1F3;border-radius:13px;padding:14px 14px 12px;margin-bottom:10px;}
+  .it-day:last-child{margin-bottom:0;}
+  .it-day-hd{display:flex;align-items:center;gap:9px;margin-bottom:9px;}
+  .it-day-num{font-size:11px;font-weight:800;color:#fff;background:var(--accent);padding:3px 8px;border-radius:5px;letter-spacing:.4px;flex-shrink:0;text-transform:uppercase;}
+  .it-day-title{font-size:14px;font-weight:700;color:var(--ink);letter-spacing:-.2px;line-height:1.35;}
+  .it-items{padding-left:4px;display:flex;flex-direction:column;gap:6px;}
+  .it-item{font-size:12.5px;color:#444;line-height:1.55;padding:5px 0 5px 18px;position:relative;}
+  .it-item::before{content:'';position:absolute;left:4px;top:12px;width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.55;}
+  .note-sub{font-size:11px;color:var(--muted);margin-bottom:8px;}
+  .note-input{width:100%;border:1px solid var(--line);border-radius:14px;padding:16px 15px;font-size:14px;font-family:inherit;background:#fff;outline:none;color:var(--ink);resize:none;height:130px;line-height:1.65;box-shadow:0 1px 3px rgba(0,0,0,.03) inset;transition:.2s;}
+  .note-input:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(0,122,255,.08),0 1px 3px rgba(0,0,0,.02) inset;}
+  .note-input::placeholder{color:#B8BCC4;font-size:13.5px;line-height:1.6;}
+  .note-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px;}
+  .nc-chip{display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border:1px solid #D4D6DB;border-radius:20px;background:#F8F9FA;color:#555B65;font-size:12px;font-weight:500;cursor:pointer;transition:.15s ease;user-select:none;-webkit-user-select:none;}
+  .nc-chip:hover{background:#EEF0F3;border-color:#C4C7CC;color:var(--ink);}
+  .nc-chip:active{transform:scale(.94);background:#E4E6EA;}
+  .nc-chip svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;opacity:.45;}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;}
+  .ph{aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:var(--bg);position:relative;}
+  .ph img{width:100%;height:100%;object-fit:cover;display:block;}
+  .d-vote{position:absolute;left:16px;right:16px;bottom:32px;border:1px solid rgba(28,28,30,.10);border-radius:13px;padding:15px;font-size:15px;font-weight:700;background:#fff;color:var(--ink);cursor:pointer;z-index:2;letter-spacing:.3px;box-shadow:0 1px 4px rgba(0,0,0,.05),0 2px 8px rgba(0,0,0,.03);}
+  .d-vote:active{transform:scale(.97);background:var(--bg);}
+  .d-vote.done{border-color:var(--accent);color:#fff;background:var(--accent);}
+
+  /* 半屏提名 */
+  .mask{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:40;display:none;align-items:flex-end;}
+  .mask.show{display:flex;}
+  .sheet{background:#fff;width:100%;border-radius:18px 18px 0 0;padding:0;max-height:80vh;display:flex;flex-direction:column;overflow:hidden;animation:sUp .32s cubic-bezier(.2,.8,.2,1);}
+  @keyframes sUp{from{transform:translateY(100%);}to{transform:translateY(0);}}
+  .sheet-grab{width:36px;height:4.5px;border-radius:2.5px;background:#D1D1D6;margin:8px auto 10px;flex-shrink:0;}
+  .sheet-head{display:flex;align-items:center;justify-content:space-between;padding:0 20px 12px;flex-shrink:0;}
+  .sheet-head .t{font-size:18px;font-weight:700;letter-spacing:-.3px;color:var(--ink);}
+  .sheet-close{width:30px;height:30px;border-radius:50%;background:var(--bg);border:none;font-size:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted);transition:.12s;}
+  .sheet-close:active{background:#E5E5EA;transform:scale(.92);}
+  .sheet-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 20px 14px;scrollbar-width:none;-ms-overflow-style:none;}
+  .sheet-body::-webkit-scrollbar{display:none;}
+
+  .sg{margin-bottom:16px;}
+  .sg:last-child{margin-bottom:0;}
+  .sg-lbl{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.2px;margin-bottom:7px;text-transform:uppercase;}
+
+  .epick{display:flex;flex-wrap:wrap;gap:7px;}
+  .epick button{font-size:19px;width:40px;height:40px;border:1px solid #E4E4E7;background:#fff;border-radius:50%;cursor:pointer;transition:.15s;display:flex;align-items:center;justify-content:center;}
+  .epick button.on{border-color:var(--accent);background:rgba(0,122,255,.07);box-shadow:0 0 0 3px rgba(0,122,255,.08);}
+  .epick button:active{transform:scale(.9);}
+
+  .inp{width:100%;border:1px solid #D8DCDF;border-radius:11px;padding:13px 14px;font-size:14.5px;font-family:inherit;background:#F9F9FB;outline:none;color:var(--ink);transition:.2s;}
+  .inp:hover{background:#F4F4F7;border-color:#CDD0D3;}
+  .inp:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(0,122,255,.09);}
+  .inp::placeholder{color:#B8B8BE;}
+  textarea.inp{resize:none;height:64px;line-height:1.5;}
+  .inp{flex:1;min-width:0;}
+
+  .upload-zone{border:1px dashed #D1D1D6;border-radius:12px;padding:13px;display:flex;align-items:center;justify-content:center;gap:7px;background:#FAFAFB;cursor:pointer;transition:.15s;}
+  .upload-zone:active{background:#F0F0F2;border-color:#BABABE;}
+  .upload-zone .up-icon{display:flex;align-items:center;flex-shrink:0;}
+  .upload-zone span{font-size:13px;font-weight:500;color:var(--muted);}
+  .preview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px;}
+  .preview-thumb{aspect-ratio:1;border-radius:10px;overflow:hidden;position:relative;background:#F0F0F2;}
+  .preview-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+  .preview-thumb .rm{position:absolute;top:4px;right:4px;width:20px;height:20px;border-radius:50%;background:rgba(0,0,0,.45);color:#fff;border:none;font-size:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+
+  .submit-bar{padding:10px 20px calc(10px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:#fff;flex-shrink:0;}
+  .submit-btn{width:100%;border:none;border-radius:13px;padding:14px;font-size:15.5px;font-weight:600;background:var(--ink);color:#fff;cursor:pointer;transition:.15s;letter-spacing:.2px;box-shadow:0 6px 18px rgba(28,28,30,.22);}
+  .submit-btn:active{transform:scale(.985);background:#2A2A2A;}
+
+  .toast{position:fixed;left:50%;top:44%;transform:translate(-50%,-50%);background:rgba(0,0,0,.78);color:#fff;padding:12px 18px;border-radius:13px;font-size:13.5px;opacity:0;pointer-events:none;transition:.25s;z-index:60;text-align:center;max-width:76%;}
+  .toast.show{opacity:1;}
+
+  /* ===== PC 端：保持手机尺寸居中（无壳/无状态栏） ===== */
+  @media(min-width:481px){
+    body{background:#E9E9EE;}
+    .phone{
+      width:430px;
+      min-height:100vh;
+      margin:0 auto;
+      box-shadow:none;
+      border:none;
+    }
+    /* 详情页也约束为手机宽度 */
+    .detail{
+      width:430px;
+      inset:auto;
+      top:0;bottom:0;left:50%;
+      transform:translateX(-50%);
+      border-radius:0;
+      box-shadow:none;
+    }
+    .detail.show{
+      animation:none;
+    }
+    /* tabbar 已有 max-width:456px + left:50% 居中，无需额外处理 */
+  }
+
+  /* ===== iOS 系统风（原生苹果质感） ===== */
+  body .hb-btn{background:#fff;border:1px solid rgba(60,60,67,.18);color:var(--ink);}
+  body .hb-btn:hover{background:#F2F2F7;border-color:rgba(60,60,67,.28);}
+  body .hb-btn.syncing{background:var(--surface);}
+  body .c-icon,body .stat-emoji,body .note-avatar,body .preview-thumb{background:var(--surface-2);}
+  body .c-arrow{background:transparent;}
+  body .c-icon{border:none;border-radius:13px;}
+  body .stat-emoji{border:none;border-radius:11px;}
+  body .tag{color:var(--muted);border-color:rgba(60,60,67,.10);background:transparent;}
+  body .stat-notes{background:#fff;}
+  body .detail{background:var(--card);}
+  body .tabbar{background:rgba(255,255,255,.92);border:1px solid var(--hairline);}
+  body .sheet{background:var(--card);}
+  body .it-day-card{background:var(--surface);border:1px solid var(--hairline);}
+  body .nc-chip{background:var(--surface-3);border:1px solid rgba(60,60,67,.14);color:#555B65;}
+  body .nc-chip:hover{background:#E9E9EB;color:var(--ink);}
+  body .upload-zone{background:var(--surface-3);border:1px dashed rgba(60,60,67,.22);}
+  body .inp{background:#fff;border:1px solid rgba(60,60,67,.18);color:var(--ink);}
+  body .inp:hover{background:#FAFAFB;border-color:rgba(60,60,67,.28);}
+  body .inp:focus{background:#fff;}
+  body .note-input{background:#fff;border:1px solid rgba(60,60,67,.18);color:var(--ink);}
+  body .epick button{background:#fff;border:1px solid rgba(60,60,67,.18);}
+  body .d-seg{background:#E9E9EB;}
+  body .d-seg button.active{background:#fff;color:var(--ink);}
+  body .d-desc{color:#555;}
+  body .note-text{color:#666;}
+  body .it-item{color:#333;}
+  body .it-day-title-inp,body .it-items-inp{background:#fff;border:1px solid rgba(60,60,67,.18);color:var(--ink);}
+  body .stat-card .bar{background:rgba(0,0,0,.06);}
+  body .sheet-grab{background:#C7C7CC;}
+  body .sheet-close{background:var(--surface);color:var(--muted);}
+  body .mask{background:rgba(0,0,0,.35);}
+  body .submit-btn{background:var(--ink);color:#fff;box-shadow:0 6px 18px rgba(0,0,0,.18);}
+  body .note-who .me-tag{background:var(--green);color:#fff;}
+  body .vote-btn{background:#fff;border:1px solid rgba(60,60,67,.18);}
+  body .d-vote{background:#fff;border:1px solid rgba(60,60,67,.18);}
+  body .header-zone{background:linear-gradient(180deg, rgba(0,122,255,.04) 0%, rgba(0,122,255,0) 72%);}
+  body .d-tag{background:rgba(0,0,0,.46);}
+  body .d-close{background:rgba(0,0,0,.4);}
+  body .toast{background:rgba(0,0,0,.78);}
+
+  /* 微信内打开引导（检测到 MicroMessenger 时显示） */
+  .wx-tip{position:fixed;top:0;left:0;right:0;z-index:9999;background:#1C1C1E;color:#fff;font-size:13px;line-height:1.5;padding:10px 14px;display:none;align-items:center;gap:8px;box-shadow:0 2px 10px rgba(0,0,0,.22);}
+  .wx-tip.show{display:flex;}
+  .wx-tip .wx-close{margin-left:auto;opacity:.65;font-size:20px;line-height:1;padding:0 2px;cursor:pointer;}
+</style>
+</head>
+<body data-page-node-id="YcvHCWMn50caTOAtHT98IN">
+<div class="phone" data-page-node-id="YlQ1RjaMX0ZpykaJIWuMnL">
+  <!-- 头部区域 -->
+  <div class="header-zone" data-page-node-id="TsBzc15y4eYVPUPBHQG9L4">
+    <header style="padding:8px 20px 0;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2;" data-page-node-id="5XkNVh5BrY0v2jhDMFm8ln">
+      <span style="font-size:18px;font-weight:800;color:var(--ink);letter-spacing:-.3px;" data-page-node-id="MvgU0W6dPRIgXKnHoIkBty">团建旅行投票</span>
+      <div style="display:flex;align-items:center;gap:8px;" data-page-node-id="f1PNkuaohYRMaOqR9mK0zO">
+        <button onclick="syncToDoc()" class="hb-btn" title="同步到腾讯文档" data-page-node-id="81PdY8LrZfgb6d5yBvgES9">同步到文档</button>
+        <button onclick="shareApp()" class="hb-btn" title="分享" data-page-node-id="qpOv3shlBLSC2LalQ3hfi2"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;" data-page-node-id="f5FIrvyotwrfiLHRyqZrGo"><path d="M15 13.5V16a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h3" data-page-node-id="fiqmr2M9yDzEaDXChbCFoB"/><path d="M12.5 3l5 4.5-5 4.5" data-page-node-id="z8o1P24qGxgD7DMJqaZ2IQ"/></svg></button>
+      </div>
+    </header>
+  </div>
+
+  <div class="wrap" id="wrap" data-page-node-id="hFw0AcE1FPUqs22bZ4bgW7"></div>
+
+  <div class="tabbar" data-page-node-id="VE7RPHEk6KFpDkmuZuwYUU">
+    <button class="tabitem active" data-view="vote" onclick="switchView('vote')" data-page-node-id="o8LLvbimAKLGHIUwMwMML6">
+      <svg viewBox="0 0 24 24" data-page-node-id="MFwH4xOhV3WunHdDYaixKB"><path d="M9 11l3 3L22 4" data-page-node-id="6PHHVjzVqFDycbyzLPIbw2"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" data-page-node-id="tz5FVjB9iAfTcbENFpVnAp"/></svg>投票
+    </button>
+    <div class="tabitem mid-wrap" data-page-node-id="sKjikCdPsMWYxDmijGwlAG">
+      <button class="mid-fab" onclick="openNominate()" data-page-node-id="qFt5jMGVPlHqIHhPhQNKtI"><svg viewBox="0 0 24 24" data-page-node-id="CSWTEc46MOFFRttX3DNmMA"><path d="M12 5v14M5 12h14" data-page-node-id="wovBHP5SLnSCOYHXwTTE1f"/></svg></button>
+    </div>
+    <button class="tabitem" data-view="stats" onclick="switchView('stats')" data-page-node-id="imQBK52OYyL5GS3dr8ce4J">
+      <svg viewBox="0 0 24 24" data-page-node-id="ou2b5smXDOTv1H753V2bK3"><path d="M5 21V9M12 21V4M19 21V13" data-page-node-id="W0zlBwyzB0dNOPh3PXDUu1"/></svg>统计
+    </button>
+  </div>
+
+  <div class="detail" id="detail" data-page-node-id="qhFYLHHLU0kgbEKNAR99cx"></div>
+
+  <!-- 半屏提名 -->
+  <div class="mask" id="nomMask" onclick="if(event.target===this)closeNom()" data-page-node-id="qFqSkswTqzj0QSoqj3x3RI">
+    <div class="sheet" data-page-node-id="yqcXclgJyfQcYOz4wjFwxP">
+      <div class="sheet-grab" data-page-node-id="tsfvRcjIDlorVDTO1GoBgX"></div>
+      <div class="sheet-head" data-page-node-id="uyGUyFKw4EH3kjzR96JZp6">
+        <div data-page-node-id="eBoKNWwiVHYB3wh4KAVJzB"><div class="t" data-page-node-id="NEv0hAnCRn2RtFBMVIBYF5">提名新方案</div></div>
+        <button class="sheet-close" onclick="closeNom()" data-page-node-id="gQiCi5WnNQCEgzyI8slpLY">✕</button>
+      </div>
+      <div class="sheet-body" data-page-node-id="Almgapie70KYAk4jDxGP8h">
+        <div class="sg" data-page-node-id="pBEOXjS7mitCC251YW1Qh1">
+          <div class="sg-lbl" data-page-node-id="n50WW2cyK8HRZggaC7bQjN">🏷 方案图标</div>
+          <div class="epick" id="ep" data-page-node-id="8GjZ76OO1mBKpUlN7Tyxwf"></div>
+        </div>
+
+        <div class="sg" data-page-node-id="cYJRMvTbnqM385TtYSjw9R">
+          <div class="sg-lbl" data-page-node-id="GgSJbBjRGjGxGyCSXf8EwN">基本信息</div>
+          <input class="inp" id="fN" placeholder="方案名称，如：西安大唐穿越之旅" style="margin-bottom:10px" data-page-node-id="4x9DENdJ2LpMRa5FvV0fnJ">
+        </div>
+
+        <div class="sg" data-page-node-id="mddB7CHfdagkU5COAmA8mA">
+          <div class="sg-lbl" data-page-node-id="kxpnyYTWvJpEdyQz6zPrXL">行程与预算</div>
+          <div class="row2" data-page-node-id="wHtN7iWXyrvqUmbsDr5Xwy">
+            <input class="inp" id="fD" type="number" placeholder="天数" min="1" max="10" oninput="syncItineraryDays()" data-page-node-id="W6lwvgemA8Zg40rMDIRLKd">
+            <input class="inp" id="fPr" type="number" placeholder="人均预算 ¥" data-page-node-id="OGrfIvjy5ADVHmStNXaBqg">
+          </div>
+          <div class="it-input-sec" id="itInputSec" data-page-node-id="KOaphkxpXGy1KTJnSLqwcE"></div>
+        </div>
+
+        <div class="sg" data-page-node-id="9JfUgChKwdVhLeHFqNKIKz">
+          <div class="sg-lbl" data-page-node-id="Z2vpztR77Ce41Bh4g9Twi9">亮点标签</div>
+          <input class="inp" id="fT" placeholder="逗号分隔，如：美食,夜游,历史" data-page-node-id="3qmJdUmEenKWHxsWpfZtF1">
+        </div>
+
+        <div class="sg" data-page-node-id="YQvIWIzS00MvgVoJrp8s0j">
+          <div class="sg-lbl" data-page-node-id="osbOjVHVzJNRVtGb0SdWSC">方案简介</div>
+          <textarea class="inp" id="fDsc" placeholder="简单说说团建亮点（选填）"></textarea>
+        </div>
+
+        <div class="sg" data-page-node-id="5lk8YsABCDCKy7lfPWtzXL">
+          <div class="sg-lbl" data-page-node-id="Df6Xhgxg7VZFUFBpnqTrZT">参考图</div>
+          <div class="upload-zone" id="upZone" onclick="document.getElementById('fileInput').click()" data-page-node-id="PfnduTDVlLE2ddlzbn8AQE">
+            <div class="up-icon" data-page-node-id="dc2R8jYUdgm1Az13eDiGXC"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#B0B0B8" stroke-width="1.8" stroke-linecap="round" data-page-node-id="yaBKqXGv94nTG2OLbGVaOg"><line x1="12" y1="5" x2="12" y2="19" data-page-node-id="zkBVJjN59A7l2J0CFqk2ay"/><line x1="5" y1="12" x2="19" y2="12" data-page-node-id="7w9R9J9U9gO0BqxuoiSnAI"/></svg></div>
+            <span data-page-node-id="nD0sh2XuphLvLqTPpLOVnU">添加图片</span>
+          </div>
+          <input type="file" id="fileInput" accept="image/*" multiple style="display:none" onchange="handleFiles(this.files)" data-page-node-id="BrhRX7DexRp8ydo2EKh44H">
+          <div class="preview-grid" id="prevGrid" data-page-node-id="wmLTYLGxf9321F4zznAIN9"></div>
+        </div>
+      </div>
+
+      <div class="submit-bar" data-page-node-id="JsVnmR9Ini5Swiw8VXaYXO">
+        <button class="submit-btn" onclick="submitNom()" data-page-node-id="4H1sF8i1rhGBWvAs34uIzs">提交提名</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" data-page-node-id="Urpv9b31WD8upAoztGfoIA"></div>
+</div>
+
+<script>
+  /* ===== 真实地点照片系统（本地文件，100% 可靠） ===== */
+  /* 所有图片已下载到 ./images/ 目录，Unsplash 真实摄影 */
+  const PLACE_PHOTOS = {
+    '海南·三亚': [
+      'images/sanya_0.jpg','images/sanya_1.jpg','images/sanya_2.jpg',
+      'images/sanya_3.jpg','images/sanya_4.jpg','images/sanya_5.jpg'
+    ],
+    '云南·大理': [
+      'images/dali_0.jpg','images/dali_1.jpg','images/dali_2.jpg',
+      'images/dali_3.jpg','images/dali_4.jpg','images/dali_5.jpg'
+    ],
+    '四川·成都': [
+      'images/chengdu_0.jpg','images/chengdu_1.jpg','images/chengdu_2.jpg',
+      'images/chengdu_3.jpg','images/chengdu_4.jpg','images/chengdu_5.jpg'
+    ],
+    '福建·厦门': [
+      'images/xiamen_0.jpg','images/xiamen_1.jpg','images/xiamen_2.jpg',
+      'images/xiamen_3.jpg','images/xiamen_4.jpg','images/xiamen_5.jpg'
+    ],
+    '浙江·千岛湖':[
+      'images/qiandao_0.jpg','images/qiandao_1.jpg','images/qiandao_2.jpg',
+      'images/qiandao_3.jpg','images/qiandao_4.jpg','images/qiandao_5.jpg'
+    ]
+  };
+  const realImg = (place, idx) => {
+    const list = PLACE_PHOTOS[place] || PLACE_PHOTOS['海南·三亚'];
+    return list[idx % list.length];
+  };
+  /* 内联 SVG 兜底（理论上不会触发，因为本地文件一定存在） */
+  const miniGrad = (place, idx) => {
+    const scenes = {
+      '海南·三亚':{c:['#0077B6','#00B4D8'],t:'🏝️ 三亚海滩'},
+      '云南·大理':{c:['#2D6A4F','#52B788'],t:'🏔️ 大理洱海'},
+      '四川·成都':{c:['#C44536','#E27D60'],t:'🐼 成都'},
+      '福建·厦门':{c:['#2A6F97','#4BA3C3'],t:'🌊 厦门'},
+      '浙江·千岛湖':{c:['#1B4332','#40916C'],t:'🏞️ 千岛湖'}
+    };
+    const s = scenes[place] || {c:['#FF6A00','#FF9248'],t:'📍 旅行'};
+    return 'data:image/svg+xml,'+encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="450">'+
+      '<defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">'+
+      '<stop offset="0%" stop-color="'+s.c[0]+'"/><stop offset="100%" stop-color="'+s.c[1]+'"/>'+
+      '</linearGradient></defs>'+
+      '<rect fill="url(%23g)" width="600" height="450"/>'+
+      '<text x="300" y="230" text-anchor="middle" font-size="36" fill="rgba(255,255,255,.35)">'+s.t+'</text></svg>');
+  };
+  const placeImg = (place, idx) => realImg(place, idx);
+  const PRESET = [
+    {id:'sanya',   emoji:'🏖️', name:'三亚海岛狂欢',   place:'海南·三亚',   days:5, price:2880, tags:['海岛','团建拓展','海鲜大餐'], desc:'碧海蓝天下的破冰团建，沙滩排球+游艇出海+海鲜自助，预算友好、氛围拉满。', base:12,
+     imgs:[realImg('海南·三亚',0),realImg('海南·三亚',1),realImg('海南·三亚',2),realImg('海南·三亚',3),realImg('海南·三亚',4),realImg('海南·三亚',5)],
+     itinerary:[
+       {day:'Day 1',title:'抵达三亚 · 破冰欢迎',items:['✈️ 各地飞抵三亚凤凰机场','🏨 入住亚龙湾海景酒店','🍹 欢迎晚宴 + 团队破冰游戏']},
+       {day:'Day 2',title:'出海狂欢 · 沙滩拓展',items:['⛵ 游艇出海 + 浮潜体验','🏐 沙滩排球接力赛','🦀 海鲜自助晚餐（现捞现做）']},
+       {day:'Day 3',title:'蜈支洲岛 · 极限挑战',items:['🚤 前往蜈支洲岛','🪂 海上拖伞 / 香蕉船二选一','🌅 日落沙滩自由活动']},
+       {day:'Day 4',title:'热带天堂 · 自由时光',items:['🌴 亚龙湾热带天堂森林公园','📸 网红玻璃栈道打卡','🎭 晚间团队才艺秀']},
+       {day:'Day 5',title:'返程 · 满载而归',items:['☕ 早餐后自由购物/漫步','🛬 送机返程，期待下次相聚']}
+     ]},
+    {id:'dali',    emoji:'🏔️', name:'大理风花雪月',   place:'云南·大理',   days:4, price:2280, tags:['古城','环湖骑行','星空篝火'], desc:'苍山洱海间的慢节奏团建，扎染体验+环海骑行+星空篝火夜话，出片率极高。', base:9,
+     imgs:[realImg('云南·大理',0),realImg('云南·大理',1),realImg('云南·大理',2),realImg('云南·大理',3),realImg('云南·大理',4),realImg('云南·大理',5)],
+     itinerary:[
+       {day:'Day 1',title:'抵达大理 · 古城漫步',items:['✈️ 飞抵大理 / 高铁直达','🏮 入住古城特色客栈','🚶 古城寻宝定向赛']},
+       {day:'Day 2',title:'洱海骑行 · 扎染体验',items:['🚲 洱海生态廊道骑行（20km）','🎨 周城白族扎染体验','🍜 喜洲粑粑 + 白族三道茶']},
+       {day:'Day 3',title:'苍山探秘 · 篝火夜话',items:['🚡 苍山索道上山','⛰️ 七龙女池徒步','🔥 洱海边星空篝火夜话']},
+       {day:'Day 4',title:'自由时光 · 返程',items:['☕ 人民路文艺咖啡街漫步','📸 最后的大理记忆','🛫 送机返程']}
+     ]},
+    {id:'chengdu', emoji:'🐼', name:'成都安逸食光',   place:'四川·成都',   days:3, price:1880, tags:['美食','熊猫','茶馆'],       desc:'火锅串串吃到撑，熊猫基地撸萌物，盖碗茶里聊人生，最解压的短途团建。', base:8,
+     imgs:[realImg('四川·成都',0),realImg('四川·成都',1),realImg('四川·成都',2),realImg('四川·成都',3),realImg('四川·成都',4),realImg('四川·成都',5)],
+     itinerary:[
+       {day:'Day 1',title:'抵达成都 · 熊猫基地',items:['✈️ 飞抵成都双流/天府','🐼 大熊猫繁育研究基地（早8点入园）','🍢 建设路小吃街扫荡']},
+       {day:'Day 2',title:'美食暴走 · 茶馆慢生活',items:['🫖 人民公园鹤鸣茶社盖碗茶','🍲 春熙路火锅大餐（微辣起步）','🎭 宽窄巷子 + 锦里夜景']},
+       {day:'Day 3',title:'自由活动 · 返程',items:['☕ 独立咖啡店探店 / 太古里逛街','🛒 伴手礼：火锅底料+熊猫周边','🛫 送机返程']}
+     ]},
+    {id:'xiamen',  emoji:'🌊', name:'厦门文艺海岸',   place:'福建·厦门',   days:4, price:2080, tags:['鼓浪屿','拓展','小清新'],   desc:'鼓浪屿寻宝+环岛骑行+日落沙滩拓展，文艺气息与团队挑战兼得。', base:7,
+     imgs:[realImg('福建·厦门',0),realImg('福建·厦门',1),realImg('福建·厦门',2),realImg('福建·厦门',3),realImg('福建·厦门',4),realImg('福建·厦门',5)],
+     itinerary:[
+       {day:'Day 1',title:'抵达厦门 · 鼓浪屿寻宝',items:['✈️/🚄 抵达厦门','⛴ 轮渡上鼓浪屿','🗺️ 鼓浪屿定向寻宝赛']},
+       {day:'Day 2',title:'环岛骑行 · 沙滩拓展',items:['🚲 环岛路骑行（最美海岸线）','🏖️ 曾厝垵沙滩团队拓展游戏','🌇 黄厝海滩日落 + 烧烤派对']},
+       {day:'Day 3',title:'文艺漫游 · 味蕾之旅',items:['🎨 沙坡尾艺术西区打卡','🍜 中山路步行街美食扫荡','🌃 世茂云上厦门（高空观景）']},
+       {day:'Day 4',title:'自由时光 · 返程',items:['☕ 独立书店 / 咖啡馆慢时光','🛒 伴手礼：馅饼+茶叶','🛫 送机返程']}
+     ]},
+    {id:'qiandao', emoji:'⛵', name:'千岛湖慢生活',   place:'浙江·千岛湖', days:2, price:1580, tags:['游船','湖畔露营','烧烤'],   desc:'一湖秀水间的轻团建，游船下午茶+湖畔露营烧烤，周末即走不费脑。', base:5,
+     imgs:[realImg('浙江·千岛湖',0),realImg('浙江·千岛湖',1),realImg('浙江·千岛湖',2),realImg('浙江·千岛湖',3),realImg('浙江·千岛湖',4),realImg('浙江·千岛湖',5)],
+     itinerary:[
+       {day:'Day 1',title:'抵达千岛湖 · 游船下午茶',items:['🚗 自驾/大巴抵达千岛湖','⛵ 中心湖区豪华游船 + 下午茶','🏕️ 湖畔营地搭建 + 烧烤晚会']},
+       {day:'Day 2',title:'晨间骑行 · 返程',items:['🚲 千岛湖绿道晨骑（15km）','☕ 鱼头汤午餐（千岛湖招牌）','🛫 下午返程']}
+     ]},
+  ];
+  const SEED_NOTES = {
+    sanya:[{who:'小林',text:'建议10月中去，避开暑假人潮和台风'},{who:'阿May',text:'人均预算3000内能接受，超了要申请'},{who:'老王',text:'想带家属一起，孩子在沙滩能玩'},{who:'Vivian',text:'出海那天别排太满，容易晕船'}],
+    dali:[{who:'阿哲',text:'环湖骑行求慢节奏，别赶景点'},{who:'婷婷',text:'晚上篝火可以安排，团建感强'},{who:'老周',text:'4天刚好，再长会 boredom'}],
+    chengdu:[{who:'胖虎',text:'火锅必须安排！微辣就行'},{who:'小鹿',text:'熊猫基地早上去，人少猫精神'},{who:'Cindy',text:'想带家属，老公爱吃火锅'}],
+    xiamen:[{who:'阿杰',text:'鼓浪屿建议工作日去，周末人挤人'},{who:'妮可',text:'预算2000左右OK'}],
+    qiandao:[{who:'大鹏',text:'周末就能走，不用请假最香'},{who:'丽丽',text:'露营怕冷，多备点毯子'}]
+  };
+  const LS_VOTES='tbg_votes_v1', LS_MY='tbg_myvote_v1', LS_CUSTOM='tbg_custom_v1', LS_DEAD='tbg_deadline_v1', LS_NOTES='tbg_notes_v1';
+
+  const EMOJIS=['🏖️','🏔️','🐼','🌊','⛵','🏕️','🍜','🎡','🌃','🌸','🏜️','🏞️','⛰️','🍃','🌅','🏯'];
+  const SEED_EMOJI='🏖️';
+  /* iOS 系统风：--accent 蓝为主操作色，纯白卡片 + 系统灰底，原生苹果质感 */
+
+  let state={schemes:[],votes:{},myVote:null,notes:{},view:'vote'};
+  let pickEmoji='🏖️';
+  let uploadedImgs=[];
+  let currentDetailId=null;
+  let heroIdx=0, heroTimer=null;
+
+  function load(){
+    let custom=JSON.parse(localStorage.getItem(LS_CUSTOM)||'[]');
+    state.schemes=[...PRESET.map(s=>({...s})),...custom];
+    let saved=JSON.parse(localStorage.getItem(LS_VOTES)||'null');
+    state.votes={};
+    state.schemes.forEach(s=>{state.votes[s.id]=(saved&&saved[s.id]!=null)?saved[s.id]:(s.base||0);});
+    state.myVote=localStorage.getItem(LS_MY)||null;
+    state.notes=JSON.parse(localStorage.getItem(LS_NOTES)||'null');
+    if(!state.notes){
+      state.notes={};
+      Object.keys(SEED_NOTES).forEach(id=>{ state.notes[id]=SEED_NOTES[id].map(n=>({...n})); });
+      localStorage.setItem(LS_NOTES,JSON.stringify(state.notes));
+    }
+    if(!localStorage.getItem(LS_DEAD)) localStorage.setItem(LS_DEAD,Date.now()+3*24*3600*1000);
+  }
+  function save(){
+    localStorage.setItem(LS_VOTES,JSON.stringify(state.votes));
+    if(state.myVote)localStorage.setItem(LS_MY,state.myVote);else localStorage.removeItem(LS_MY);
+  }
+  function totalVotes(){return Object.values(state.votes).reduce((a,b)=>a+b,0);}
+  function sorted(){return[...state.schemes].sort((a,b)=>state.votes[b.id]-state.votes[a.id]);}
+  function nameOf(id){const s=state.schemes.find(x=>x.id===id);return s?s.name:id;}
+
+  function vote(id,cb){
+    if(state.myVote===id){
+      /* 取消投票：减票、清 myVote */
+      state.votes[id]--;
+      state.myVote=null;
+      save();render();if(cb)cb();
+      toast('已取消投票');
+      return;
+    }
+    if(state.myVote)state.votes[state.myVote]--;
+    state.votes[id]++;
+    state.myVote=id;
+    save();render();if(cb)cb();
+    toast('已投给「'+nameOf(id)+'」');
+  }
+
+  function esc(s){return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+  function saveNotes(){localStorage.setItem(LS_NOTES,JSON.stringify(state.notes));}
+  function attachNote(id,note){
+    Object.keys(state.notes).forEach(sid=>{ state.notes[sid]=state.notes[sid].filter(n=>n.who!=='我'); });
+    if(note){
+      if(!state.notes[id])state.notes[id]=[];
+      state.notes[id].push({who:'我',text:note,t:Date.now()});
+    }
+    saveNotes();
+  }
+  function voteDetail(id){
+    if(state.myVote===id){
+      /* 详情页取消投票 */
+      vote(id,()=>syncDV(id));
+      return;
+    }
+    const ta=document.getElementById('noteInput');
+    attachNote(id, ta?ta.value.trim():'');
+    vote(id,()=>syncDV(id));
+  }
+
+  function switchView(v){
+    state.view=v;
+    document.querySelectorAll('.tabitem').forEach(t=>t.classList.toggle('active',t.dataset.view===v));
+    render();
+  }
+  function cdText(){
+    const d=parseInt(localStorage.getItem(LS_DEAD));let diff=d-Date.now();
+    if(diff<=0)return'已截止';
+    const day=Math.floor(diff/86400000);diff-=day*86400000;
+    const hr=Math.floor(diff/3600000);diff-=hr*3600000;
+    const min=Math.floor(diff/60000);
+    return`${day}d ${hr}h ${min}m`;
+  }
+
+  function gridFallback(seed){return 'https://picsum.photos/seed/'+(seed||'tbg')+'/600/400';}
+
+  function render(){
+    const wrap=document.getElementById('wrap');
+    if(state.view==='vote'){
+      const list=sorted();const max=Math.max(...Object.values(state.votes),1);
+      wrap.innerHTML=
+        `<div class="pad">`+
+        list.map((s,i)=>{
+          const v=state.votes[s.id];const tot=totalVotes();const pct=tot?Math.round(v/tot*100):0;
+          const voted=state.myVote===s.id;
+          return `<div class="card ${voted?'voted':''}" onclick="openDetail('${s.id}')">
+            <div class="c-top">
+              <div class="c-icon">${s.emoji}</div>
+              <div class="c-info">
+                <div class="c-name">${s.name}</div>
+                <div class="c-place">📍 ${s.place}</div>
+              </div>
+              <div class="c-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></div>
+            </div>
+            <div class="tags">${s.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+            <div class="data-row">
+              <span class="data-item">${s.days}<b>天</b></span>
+              <span class="data-item">¥<b>${s.price}</b></span>
+            </div>
+            <div class="desc">${s.desc}</div>
+            <button class="vote-btn ${voted?'done':''}" onclick="event.stopPropagation();vote('${s.id}')">${voted?'✓ 已投票':'投它一票'}</button>
+          </div>`;
+        }).join('')+`</div>`;
+    } else if(state.view==='stats'){
+      const list=sorted();const tot=totalVotes();const cnt=state.schemes.length;
+      let html=`<div class="pad"><div class="stats-grid">
+        <div class="sg-card"><div class="sg-row"><div class="sg-num">${tot}</div><div class="sg-unit">人</div></div><div class="sg-lbl">参与投票</div></div>
+        <div class="sg-card alt"><div class="sg-row"><div class="sg-num">${cnt}</div><div class="sg-unit">个</div></div><div class="sg-lbl">候选方案</div></div>
+      </div>`;
+      list.forEach(s=>{
+        const v=state.votes[s.id];const pct=tot?Math.round(v/tot*100):0;
+        const ns=(state.notes[s.id]||[]);
+        html+=`<div class="stat-card">
+          <div class="stat-hd">
+            <div class="stat-emoji">${s.emoji}</div>
+            <div class="stat-info">
+              <div class="stat-name">${s.name}</div>
+              <div class="stat-v">${v} 票 · ${pct}% 得票率</div>
+            </div>
+            <div class="stat-pct-badge">${pct}%</div>
+          </div>
+          <div class="stat-bar-wrap"><div class="bar"><div class="fill" style="width:${pct}%"></div></div></div>
+          ${ns.length? `<div class="stat-notes">${ns.map(n=>`<div class="note-item"><div class="note-avatar">${n.who?n.who.charAt(0).toUpperCase():'?'}</div><div class="note-body"><div class="note-who">${esc(n.who)}${n.who==='我'?'<span class="me-tag">我</span>':''}</div><div class="note-text">${esc(n.text)}</div></div></div>`).join('')}</div>` : '<div class="notes-empty">暂无备注</div>'}
+        </div>`;
+      });
+      wrap.innerHTML=html+'</div>';
+    } else {
+      wrap.innerHTML='<div style="text-align:center;padding:60px 0;color:var(--muted);font-size:13px;">点击底部 ➕ 按钮提名新方案</div>';
+    }
+  }
+
+  /* ===== 详情页（无分类Tab）===== */
+  function openDetail(id){
+    currentDetailId=id;
+    const s=state.schemes.find(x=>x.id===id);if(!s)return;
+    const voted=state.myVote===id;
+    const myNote=(state.notes[id]||[]).find(n=>n.who==='我');
+    const fb=(i)=>placeImg(s.place, i);
+    const imgs=s.imgs&&s.imgs.length? s.imgs : Array.from({length:6},(_,i)=>fb(i));
+    const d=document.getElementById('detail');
+    /* fallback：LoremFlickr(主) → SVG渐变(兜底) */
+    const mg0=miniGrad(s.place,0);
+    const mg1=miniGrad(s.place,1), mg2=miniGrad(s.place,2);
+    const mg3=miniGrad(s.place,3), mg4=miniGrad(s.place,4), mg5=miniGrad(s.place,5);
+    d.innerHTML=`<div class="d-hero-wrap"><img class="d-hero" src="${imgs[0]}" onerror="this.src='${mg0}'">
+      <button class="d-close" onclick="closeDetail()">✕</button><div class="d-tag">${s.emoji} ${s.place}</div></div>
+      <div class="d-body">
+        <div class="d-title">${s.name}</div>
+        <div class="d-meta"><span>⏱ <b>${s.days}天</b></span><span>💰 ¥<b>${s.price}/人</b></span></div>
+        <div class="d-desc">${s.desc}</div>
+        <div class="d-seg">
+          <button class="active" onclick="switchDTab('it',this)"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2.5"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>行程</button>
+          <button onclick="switchDTab('ph',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.8"/><path d="M21 15l-5-5L5 21"/></svg>图片</button>
+          <button onclick="switchDTab('nt',this)"><svg viewBox="0 0 24 24"><path d="M5 3h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2z"/><path d="M9 9h6M9 13h6M9 17h3"/></svg>备注</button>
+        </div>
+        <div class="d-tab active" id="tab-it">
+          ${s.itinerary&&s.itinerary.length?s.itinerary.map(d=>`<div class="it-day"><div class="it-day-hd"><span class="it-day-num">${esc(d.day)}</span><span class="it-day-title">${esc(d.title)}</span></div><div class="it-items">${d.items.map(it=>`<div class="it-item">${esc(it)}</div>`).join('')}</div></div>`).join(''):'<div class="empty-hint">暂无行程安排</div>'}
+        </div>
+        <div class="d-tab" id="tab-ph">
+          <div class="grid">${imgs.map((u,i)=>`<div class="ph"><img src="${u}" loading="lazy" onerror="this.src='${[mg1,mg2,mg3,mg4,mg5][i]}'"></div>`).join('')}</div>
+        </div>
+        <div class="d-tab" id="tab-nt">
+          <textarea id="noteInput" class="note-input" placeholder="补充说明：出行时间、人均预算、是否带家属、住宿偏好等...">${esc(myNote?myNote.text:'')}</textarea>
+          <div class="note-chips" style="margin-top:12px;">
+            <span class="nc-chip" onclick="addNoteChip(this,'10月中下旬出行')"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="3"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="13" y2="14"/></svg>10月出行</span>
+            <span class="nc-chip" onclick="addNoteChip(this,'人均预算2500左右')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>预算2500</span>
+            <span class="nc-chip" onclick="addNoteChip(this,'带家属1人')"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="4"/><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/></svg>带家属</span>
+            <span class="nc-chip" onclick="addNoteChip(this,'希望住海景酒店')"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 11h6M9 15h4"/></svg>海景房</span>
+            <span class="nc-chip" onclick="addNoteChip(this,'不坐红眼航班')"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.27 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91"/></svg>白天航班</span>
+          </div>
+        </div>
+      </div>
+      <button class="d-vote ${voted?'done':''}" id="dvBtn" onclick="voteDetail('${id}')">${voted?'✓ 已投票':'投它一票'}</button>`;
+    d.classList.add('show');
+  }
+  function syncDV(id){
+    const b=document.getElementById('dvBtn');
+    const voted=state.myVote===id;
+    if(b){b.className='d-vote '+(voted?'done':'');b.textContent=voted?'✓ 已投票':'投它一票';}
+  }
+  function closeDetail(){document.getElementById('detail').classList.remove('show');currentDetailId=null;}
+  function switchDTab(tab, btn){
+    document.querySelectorAll('.d-seg button').forEach(b=>b.classList.remove('active'));
+    if(btn) btn.classList.add('active');
+    document.querySelectorAll('.d-tab').forEach(t=>t.classList.remove('active'));
+    const el=document.getElementById('tab-'+tab);
+    if(el) el.classList.add('active');
+  }
+  function addNoteChip(el, text){
+    const ta=document.getElementById('noteInput');
+    if(!ta) return;
+    const v=ta.value.trim();
+    ta.value=v? (v+'；'+text): text;
+    ta.focus();
+    // 视觉反馈
+    el.style.background='var(--accent)';
+    el.style.color='#fff';
+    el.style.borderColor='var(--accent)';
+    setTimeout(()=>{el.style='';},350);
+  }
+
+  /* ===== 半屏提名 ===== */
+  function openNominate(){
+    uploadedImgs=[];
+    document.getElementById('prevGrid').innerHTML='';
+    document.getElementById('fN').value='';
+    document.getElementById('fD').value='';document.getElementById('fPr').value='';
+    document.getElementById('itInputSec').innerHTML='';
+    document.getElementById('fT').value='';document.getElementById('fDsc').value='';
+    buildEP();
+    document.getElementById('nomMask').classList.add('show');
+  }
+  function closeNom(){document.getElementById('nomMask').classList.remove('show');}
+  function buildEP(){const box=document.getElementById('ep');if(!box)return;
+    box.innerHTML=EMOJIS.map(e=>`<button class="${e===pickEmoji?'on':''}" onclick="pickE('${e}')">${e}</button>`).join('');}
+  function pickE(e){pickEmoji=e;buildEP();}
+
+  function handleFiles(files){
+    if(!files||!files.length)return;
+    const remain=9-uploadedImgs.length;
+    if(remain<=0){toast('最多 9 张');return;}
+    Array.from(files).slice(0,remain).forEach(f=>{
+      if(!f.type||!f.type.startsWith('image/'))return;
+      const r=new FileReader();
+      r.onload=e=>{uploadedImgs.push(e.target.result);renderPreviews();};
+      r.readAsDataURL(f);
+    });
+  }
+  function renderPreviews(){
+    const g=document.getElementById('prevGrid');
+    g.innerHTML=uploadedImgs.map((src,i)=>`<div class="preview-thumb"><img src="${src}"><button class="rm" onclick="rmImg(${i})">✕</button></div>`).join('');
+  }
+  function rmImg(i){uploadedImgs.splice(i,1);renderPreviews();}
+
+  function submitNom(){
+    const n=document.getElementById('fN').value.trim();
+    const dy=parseInt(document.getElementById('fD').value)||0;
+    const pr=parseInt(document.getElementById('fPr').value)||0;
+    const tg=document.getElementById('fT').value.split(/[,，]/).map(t=>t.trim()).filter(Boolean);
+    const ds=document.getElementById('fDsc').value.trim();
+    if(!n){toast('请填写方案名称');return;}
+    // 收集行程计划
+    const itineraries=[];
+    for(let d=1;d<=dy;d++){
+      const titleEl=document.getElementById('itTitle'+d);
+      const itemsEl=document.getElementById('itItems'+d);
+      if(titleEl||itemsEl){
+        const t=(titleEl?titleEl.value.trim():'') || ('Day '+d);
+        const items=(itemsEl?itemsEl.value.trim():'').split('\n').map(x=>x.trim()).filter(Boolean);
+        if(items.length) itineraries.push({day:d,title:t,items:items});
+      }
+    }
+    const id='c'+Date.now();
+    const c=JSON.parse(localStorage.getItem(LS_CUSTOM)||'[]');
+    c.push({id,emoji:pickEmoji,name:n,place:'自定义',days:dy,price:pr,tags:tg.length?tg:['新提名'],desc:ds||'等你来补充～',base:0,
+      imgs: uploadedImgs.length? uploadedImgs : Array.from({length:6},(_,i)=>realImg('自定义', i)),
+      itinerary:itineraries.length?itineraries:[]});
+    localStorage.setItem(LS_CUSTOM,JSON.stringify(c));
+    pickEmoji='🏖️';
+    closeNom();load();switchView('vote');toast('已提名');
+  }
+
+  /* ===== 动态行程天数输入 ===== */
+  let _itPrevDays=0;
+  function syncItineraryDays(){
+    const dy=Math.max(0,Math.min(10,parseInt(document.getElementById('fD').value)||0));
+    const sec=document.getElementById('itInputSec');
+    if(!sec){return;}
+    if(dy===0){sec.innerHTML='<div class="it-empty-hint">填写天数后可添加每日行程安排</div>';_itPrevDays=0;return;}
+    if(dy===_itPrevDays)return;
+    _itPrevDays=dy;
+    let html='';
+    for(let i=1;i<=dy;i++){
+      html+=`<div class="it-day-card">
+        <div class="it-day-hd"><span class="it-day-badge">Day ${i}</span><input class="it-day-title-inp" id="itTitle${i}" placeholder="主题，如：抵达${pName()}" oninput="updateItBadge(${i})"></div>
+        <div class="it-items-label">📋 行程项目（每行一项）</div>
+        <textarea class="it-items-inp" id="itItems${i}" placeholder="例如：&#10;✈️ 飞抵目的地&#10;🏨 入住酒店&#10;🍽️ 欢迎晚宴"></textarea></div>`;
+    }
+    sec.innerHTML=html;
+  }
+  function pName(){const el=document.getElementById('fN');return el?(el.value.trim()||'目的地'):'目的地';}
+  function updateItBadge(d){const el=document.getElementById('itTitle'+d);if(el&&el.value.trim()){const badge=el.parentElement.querySelector('.it-day-badge');if(badge)badge.textContent=el.value.trim().slice(0,8);}}
+
+  /* App 分享链接（已部署到腾讯云 Studio，微信可访问） */
+  const APP_SHARE_URL='https://e20c34b0cb00493bbfb02d39dc96d8d8.app-tencent.workbuddy.link';
+  function shareApp(){
+    const u=APP_SHARE_URL;
+    if(navigator.clipboard)navigator.clipboard.writeText(u).then(()=>toast('链接已复制')).catch(()=>toast(u));
+    else toast(u);
+  }
+
+  /* ===== 同步到腾讯文档智能表格（第一种模式：直接写入云端智能表） ===== */
+  /* 已创建的智能表格：https://docs.qq.com/smartsheet/DR2RFb2VQbEJpTUx4 */
+  const TBDOC_URL='https://docs.qq.com/smartsheet/DR2RFb2VQbEJpTUx4';
+  const TBDOC_FILE_ID='GdEoePlBiMLx';
+  let _syncing=false;
+  function syncToDoc(){
+    if(_syncing)return;
+    const btn=document.querySelector('.hb-btn.syncing')||document.querySelector('.hb-btn');
+    if(btn){btn.classList.add('syncing');btn.textContent='同步中';}
+    _syncing=true;
+
+    // 收集数据
+    var schemes=state.schemes, votes=state.votes, notes=state.notes, tot=totalVotes();
+    var rows=[];
+    schemes.forEach(function(s){
+      var v=votes[s.id]||0, pct=tot?Math.round(v/tot*100):0;
+      var schemeNotes=(notes[s.id]||[]);
+      var voters=schemeNotes.map(function(n){return n.who;}).filter(Boolean);
+      rows.push({
+        '方案名称': s.name,
+        '目的地': s.place,
+        '天数': s.days,
+        '人均预算': s.price,
+        '票数': v,
+        '得票率': pct+'%',
+        '投票人': voters.join('\u3001') || '-',
+        '备注汇总': schemeNotes.map(function(n){return n.who+'\uFF1A'+n.text;}).join('\n') || '-'
+      });
+    });
+
+    // 第一种模式：宿主注入桥接时，直接写入腾讯文档智能表格（实时）
+    if(typeof window.__tencentDocsSync==='function'){
+      window.__tencentDocsSync(rows).then(function(){
+        toast('\u5DF2\u540C\u6B65\u5230\u817E\u8BAF\u6587\u6863 \u2713');
+        resetSyncBtn(btn);
+      }).catch(function(e){
+        console.error('sync error:',e);
+        syncFallback(rows, btn);
+      });
+    }else{
+      syncFallback(rows, btn);
+    }
+  }
+  function syncFallback(rows, btn){
+    // 未注入桥接：打开已创建的腾讯文档智能表格（第一种模式文档）+ 导出 CSV 备份
+    try{ window.open(TBDOC_URL, '_blank'); }catch(e){}
+    var csv='\uFEFF\u65B9\u6848\u540D\u79F0,\u76EE\u7684\u5730,\u5929\u6570,\u4EBA\u5747\u9884\u7B97,\u7968\u6570,\u5F97\u7968\u7387,\u6295\u7968\u4EBA,\u5907\u6CE8\u6C47\u603B\n';
+    rows.forEach(function(r){
+      csv+=[
+        r['\u65B9\u6848\u540D\u79F0'],r['\u76EE\u7684\u5730'],r['\u5929\u6570'],r['\u4EBA\u5747\u9884\u7B97'],
+        r['\u7968\u6570'],r['\u5F97\u7968\u7387'],r['\u6295\u7968\u4EBA'],
+        String(r['\u5907\u6CE8\u6C47\u603B']).replace(/"/g,'""').replace(/\n/g,' | ')
+      ].map(function(c){return '"'+c+'"';}).join(',')+'\n';
+    });
+    var blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
+    var a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);
+    a.download='\u56E2\u5EFA\u65C5\u884C\u6295\u7968\u7EDF\u8BA1_'+new Date().toLocaleDateString('zh-CN').replace(/\//g,'-')+'.csv';
+    a.click();URL.revokeObjectURL(a.href);
+    toast('\u5DF2\u6253\u5F00\u817E\u8BAF\u6587\u6863\u667A\u80FD\u8868\u683C');
+    resetSyncBtn(btn);
+  }
+  function resetSyncBtn(btn){
+    if(btn){btn.classList.remove('syncing');btn.textContent='\u540C\u6B65\u5230\u6587\u6863';}
+    _syncing=false;
+  }
+
+  /* 腾讯文档桥接接口（宿主注入 bridge 时，按钮直接写入云端智能表，无需 CSV） */
+  window.__setTencentDocsSync=function(fn){window.__tencentDocsSync=fn;};
+  let tt;
+  function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),1700);}
+
+
+  /* ===== Hero 轮播（v9 无 Hero Banner，保留兼容空函数）===== */
+  function initHero(){ /* no-op in v9 (Hero banner removed) */ }
+  function wechatTip(){
+    var ua=navigator.userAgent||'';
+    if(/MicroMessenger/i.test(ua)){
+      var tip=document.createElement('div');
+      tip.className='wx-tip show';
+      tip.innerHTML='<span>微信内打开受限？点击右上角 ··· 选择「在浏览器打开」即可正常访问</span><span class="wx-close" onclick="this.parentNode.remove()">×</span>';
+      document.body.appendChild(tip);
+    }
+  }
+
+  window.onerror=function(msg,src,line,col,err){document.title='JS ERROR: '+msg+' (line '+line+')';console.error('TBV-ERR:',msg,'at',line+':'+col,err);return false;};
+  try{load();render();initHero();wechatTip();}catch(e){document.title='CRASH: '+e.message;document.getElementById('wrap').innerHTML='<pre style="padding:20px;color:red">CRASH: '+e.message+'\n\n'+e.stack+'</pre>';}
+  setInterval(()=>{if(state.view==='vote')try{render();}catch(e){console.error('render err:',e);}},30000);
+</script>
+</body>
+</html>
