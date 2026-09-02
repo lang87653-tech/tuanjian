@@ -7,7 +7,7 @@
 <meta name="description" content="5 个精选目的地团建方案，投票选出最想去的那一趟。" data-page-node-id="1qiRjhhNflc1Y4EIcFJm19" />
 <meta property="og:title" content="团建旅行方案投票" data-page-node-id="GcGCbDSyG5IkD46M2P9BKJ" />
 <meta property="og:description" content="三亚 · 大理 · 成都 · 厦门 · 千岛湖，5 个方案等你投票" data-page-node-id="HU5tFQHwWBmdMDJHNS9oL3" />
-<meta property="og:image" content="https://e20c34b0cb00493bbfb02d39dc96d8d8.app-tencent.workbuddy.link/images/sanya_0.jpg" data-page-node-id="Xexu6XGVFQSjXI5rc3GjGd" />
+<meta property="og:image" content="https://lang87653-tech.github.io/tuanjian/images/sanya_0.jpg?v=20260902b" data-page-node-id="Xexu6XGVFQSjXI5rc3GjGd" />
 <meta property="og:type" content="website" data-page-node-id="si7DdcD4SHTy1IPymfmYX7" />
 <style>
   :root{
@@ -409,9 +409,12 @@
       'images/qiandao_3.jpg','images/qiandao_4.jpg','images/qiandao_5.jpg'
     ]
   };
+  /* 图片版本号：换图后递增，强制微信/浏览器丢弃旧缓存 */
+  const IMG_VER = '20260902b';
   const realImg = (place, idx) => {
     const list = PLACE_PHOTOS[place] || PLACE_PHOTOS['海南·三亚'];
-    return list[idx % list.length];
+    const p = list[idx % list.length];
+    return p.indexOf('data:') === 0 ? p : p + '?v=' + IMG_VER;
   };
   /* 内联 SVG 兜底（理论上不会触发，因为本地文件一定存在） */
   const miniGrad = (place, idx) => {
@@ -774,8 +777,8 @@
   function pName(){const el=document.getElementById('fN');return el?(el.value.trim()||'目的地'):'目的地';}
   function updateItBadge(d){const el=document.getElementById('itTitle'+d);if(el&&el.value.trim()){const badge=el.parentElement.querySelector('.it-day-badge');if(badge)badge.textContent=el.value.trim().slice(0,8);}}
 
-  /* App 分享链接（已部署到腾讯云 Studio，微信可访问） */
-  const APP_SHARE_URL='https://e20c34b0cb00493bbfb02d39dc96d8d8.app-tencent.workbuddy.link';
+  /* App 分享链接（GitHub Pages，微信内可直接打开） */
+  const APP_SHARE_URL='https://lang87653-tech.github.io/tuanjian/';
   function shareApp(){
     const u=APP_SHARE_URL;
     if(navigator.clipboard)navigator.clipboard.writeText(u).then(()=>toast('链接已复制')).catch(()=>toast(u));
@@ -857,15 +860,8 @@
 
   /* ===== Hero 轮播（v9 无 Hero Banner，保留兼容空函数）===== */
   function initHero(){ /* no-op in v9 (Hero banner removed) */ }
-  function wechatTip(){
-    var ua=navigator.userAgent||'';
-    if(/MicroMessenger/i.test(ua)){
-      var tip=document.createElement('div');
-      tip.className='wx-tip show';
-      tip.innerHTML='<span>微信内打开受限？点击右上角 ··· 选择「在浏览器打开」即可正常访问</span><span class="wx-close" onclick="this.parentNode.remove()">×</span>';
-      document.body.appendChild(tip);
-    }
-  }
+  /* GitHub Pages 微信内可直接打开，无需引导条 */
+  function wechatTip(){ /* no-op */ }
 
   window.onerror=function(msg,src,line,col,err){document.title='JS ERROR: '+msg+' (line '+line+')';console.error('TBV-ERR:',msg,'at',line+':'+col,err);return false;};
   try{load();render();initHero();wechatTip();}catch(e){document.title='CRASH: '+e.message;document.getElementById('wrap').innerHTML='<pre style="padding:20px;color:red">CRASH: '+e.message+'\n\n'+e.stack+'</pre>';}
