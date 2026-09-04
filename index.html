@@ -304,7 +304,7 @@
     <header style="padding:8px 20px 0;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2;" data-page-node-id="5XkNVh5BrY0v2jhDMFm8ln">
       <span style="font-size:18px;font-weight:800;color:var(--ink);letter-spacing:-.3px;" data-page-node-id="MvgU0W6dPRIgXKnHoIkBty">团建旅行投票</span>
       <div style="display:flex;align-items:center;gap:8px;" data-page-node-id="f1PNkuaohYRMaOqR9mK0zO">
-        <button onclick="syncToDoc()" class="hb-btn" title="同步到腾讯文档" data-page-node-id="81PdY8LrZfgb6d5yBvgES9">同步到文档</button>
+        <button onclick="openDoc()" class="hb-btn" title="查看腾讯文档表格" data-page-node-id="81PdY8LrZfgb6d5yBvgES9">查看表格</button>
         <button onclick="shareApp()" class="hb-btn" title="分享" data-page-node-id="qpOv3shlBLSC2LalQ3hfi2"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;" data-page-node-id="f5FIrvyotwrfiLHRyqZrGo"><path d="M15 13.5V16a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h3" data-page-node-id="fiqmr2M9yDzEaDXChbCFoB"/><path d="M12.5 3l5 4.5-5 4.5" data-page-node-id="z8o1P24qGxgD7DMJqaZ2IQ"/></svg></button>
       </div>
     </header>
@@ -789,6 +789,12 @@
   /* 已创建的智能表格：https://docs.qq.com/smartsheet/DR2RFb2VQbEJpTUx4 */
   const TBDOC_URL='https://docs.qq.com/smartsheet/DR2RFb2VQbEJpTUx4';
   const TBDOC_FILE_ID='GdEoePlBiMLx';
+  /* 查看表格：打开腾讯文档智能表（微信内 window.open 常被拦，降级为当前页跳转） */
+  function openDoc(){
+    var w=null;
+    try{ w=window.open(TBDOC_URL,'_blank'); }catch(e){}
+    if(!w){ location.href=TBDOC_URL; }
+  }
   let _syncing=false;
   function syncToDoc(){
     if(_syncing)return;
